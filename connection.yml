@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  postgresdb:
+    image: postgres
+    ports:
+      - 5656:5432
+    volumes:
+      - /home/vishnuprasadr/docker-volume/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD : pass
+      POSTGRES_DB: bbrx_iam_accounts_docker
+      PGDATA: /var/lib/postgresql/data/pgdata
+
+ 
+  dbviewer:
+    image: adminer
+    ports:
+      - 8081:8080
+ 
+volumes: 
+    data: {} 
+    
