@@ -13,16 +13,16 @@ import (
 
 func main() {
 	db1 := dbconnect.Dbconnect()
-    
+
 	r := mux.NewRouter()
 
 	r.HandleFunc("/VeiwAll", create.VeiwAll(db1)).Methods("GET")
 
 	r.HandleFunc("/VInsertValues", create.InsertValues(db1))
 
-	r.HandleFunc("/GetById", create.GetById(db1, 26))
+	r.HandleFunc("/GetById", create.GetById(db1))
 
-	r.HandleFunc("/Update", create.Update(db1, 6, "new_john@example.com"))
+	r.HandleFunc("/Update", create.Update(db1))
 
 	r.HandleFunc("/Delete", create.Delete(db1, 16))
 
@@ -30,11 +30,3 @@ func main() {
 	log.Fatal(http.ListenAndServe(":8080", r))
 	defer db1.Close()
 }
-
-
-
-
-
-
-
-
